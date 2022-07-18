@@ -2,11 +2,24 @@
 from pprint import pprint
 
 
-rfile_name = "recipes.txt"
-
-cook_book = dict()
-
 def main():
+
+    rfile_name = "recipes.txt"
+    cook_book = dict()
+
+    def get_shop_list_by_dishes(dishes, person_count: int) -> dict:
+        out_dict = dict()
+        for dish in dishes:
+            if dish in cook_book:
+                for ingredient_item in cook_book[dish]:
+                    if ingredient_item['ingredient_name'] not in out_dict:
+                        out_dict[ingredient_item['ingredient_name']] = {"measure" : ingredient_item['measure'], "quantity" : int(ingredient_item['quantity']) * person_count}
+                    else:
+                        out_dict[ingredient_item['ingredient_name']]["quantity"] +=  int(ingredient_item['quantity']) * person_count
+                    
+            else:
+                print(dish, "not found.")
+        return out_dict
 
     # задача 1
     with open(rfile_name, encoding="UTF-8") as cfile:
@@ -40,23 +53,6 @@ def main():
     # задача 2
     #pprint(get_shop_list_by_dishes(['Запеченный картофель', 'Запеченный картофель', 'Омлет', 'Фахитос'], 2))
     pprint(get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'], 2))
-
-
-def get_shop_list_by_dishes(dishes, person_count: int) -> dict:
-    out_dict = dict()
-    for dish in dishes:
-        if dish in cook_book:
-            for ingredient_item in cook_book[dish]:
-                if ingredient_item['ingredient_name'] not in out_dict:
-                    out_dict[ingredient_item['ingredient_name']] = {"measure" : ingredient_item['measure'], "quantity" : int(ingredient_item['quantity']) * person_count}
-                else:
-                    out_dict[ingredient_item['ingredient_name']]["quantity"] +=  int(ingredient_item['quantity']) * person_count
-                
-        else:
-            print(dish, "not found.")
-    return out_dict
-
-
 
 
 if __name__ == "__main__":
