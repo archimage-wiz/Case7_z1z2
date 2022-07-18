@@ -1,10 +1,11 @@
 
 from pprint import pprint
 
+RFILE_NAME = "recipes.txt"
+
 
 def main():
-
-    rfile_name = "recipes.txt"
+    
     cook_book = dict()
 
     def get_shop_list_by_dishes(dishes, person_count: int) -> dict:
@@ -22,7 +23,7 @@ def main():
         return out_dict
 
     # задача 1
-    with open(rfile_name, encoding="UTF-8") as cfile:
+    with open(RFILE_NAME, encoding="UTF-8") as cfile:
         while True:
             cook_book_key = cfile.readline().strip("\n")
             if len(cook_book_key) > 0 and "|" not in cook_book_key:
