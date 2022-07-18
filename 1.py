@@ -38,7 +38,8 @@ def main():
     pprint(cook_book)
 
     # задача 2
-    pprint(get_shop_list_by_dishes(['Запеченный картофель', 'Запеченный картофель', 'Омлет', 'Фахитос'], 2))
+    #pprint(get_shop_list_by_dishes(['Запеченный картофель', 'Запеченный картофель', 'Омлет', 'Фахитос'], 2))
+    pprint(get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'], 2))
 
 
 def get_shop_list_by_dishes(dishes, person_count: int) -> dict:
